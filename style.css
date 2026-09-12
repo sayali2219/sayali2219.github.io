@@ -248,11 +248,11 @@
   transition:transform .25s ease,box-shadow .25s ease;
 }
 
-.whatsapp-float b{
-  font-family:Arial,sans-serif;
-  font-size:20px;
-  font-weight:400;
-  line-height:1;
+.whatsapp-float svg{
+  width:27px;
+  height:27px;
+  display:block;
+  fill:#fff;
 }
 
 .whatsapp-float span{
