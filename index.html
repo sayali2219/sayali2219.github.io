@@ -258,10 +258,17 @@ fbq('track', 'PageView');
 document.addEventListener('DOMContentLoaded', function () {
   var leadForm = document.querySelector('.project-form');
   if (leadForm) {
-    leadForm.addEventListener('submit', function () {
+    leadForm.addEventListener('submit', function (event) {
+      if (!leadForm.checkValidity()) {
+        return;
+      }
+      event.preventDefault();
       if (typeof fbq === 'function') {
         fbq('track', 'Lead');
       }
+      window.setTimeout(function () {
+        HTMLFormElement.prototype.submit.call(leadForm);
+      }, 1500);
     });
   }
 });
