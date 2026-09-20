@@ -33,6 +33,48 @@ tabs.forEach(tab=>{
 
 const beforeAfter=document.querySelectorAll('[data-before-after]');
 
+const decodeHexToText=hex=>{
+  const clean=hex.replace(/\s+/g,'');
+  let out='';
+  for(let i=0;i<clean.length;i+=2){
+    out+=String.fromCharCode(parseInt(clean.slice(i,i+2),16));
+  }
+  return out;
+};
+
+const loadExactHallImage=async(image,type)=>{
+  const partCounts={before:14,after:15};
+  const parts=Array.from({length:partCounts[type]},(_,index)=>
+    'assets/hall-'+type+'-1080/part-'+String(index+1).padStart(3,'0')+'.txt'
+  );
+
+  try{
+    const responses=await Promise.all(
+      parts.map(path=>fetch(path,{cache:'no-store'}))
+    );
+    if(responses.some(response=>!response.ok)){
+      throw new Error('Exact hall image chunk request failed');
+    }
+
+    const encodedChunks=await Promise.all(responses.map(response=>response.text()));
+    const base64=encodedChunks.map(decodeHexToText).join('').trim();
+
+    if(!base64) throw new Error('Exact hall image data is empty');
+
+    image.src='data:image/jpeg;base64,'+base64;
+    await image.decode();
+  }catch(error){
+    // Fallback keeps the slider functional if a chunk ever fails to load.
+    const fallback=image.dataset.imageBase64;
+    if(fallback){
+      const response=await fetch(fallback,{cache:'force-cache'});
+      const base64=(await response.text()).trim();
+      image.src='data:image/webp;base64,'+base64;
+    }
+    console.error('Artisan Mate exact transformation image failed to load:',error);
+  }
+};
+
 beforeAfter.forEach(component=>{
   const media=component.querySelector('.before-after-media');
   const beforeImage=component.querySelector('.before-image');
@@ -92,4 +134,6 @@ beforeAfter.forEach(component=>{
   });
 
   render();
+  loadExactHallImage(beforeImage,'before');
+  loadExactHallImage(afterImage,'after');
 });
