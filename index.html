@@ -296,11 +296,12 @@ fbq('track', 'PageView');
   <div class="wrap consult-grid">
     <div class="consult-copy"><p class="eyebrow light">START A CONVERSATION</p><h2>Bring us the room you can't quite figure out.</h2><p>Tell us what you're planning, where you're based and what kind of help you need. We'll get back to you about the right consultation or design scope. You can also send your floor plan, room photos or measurements after we connect.</p><p class="small">Serving homeowners across India • Design &amp; consultation only • Execution by your chosen team</p>
       <a class="consult-whatsapp" href="https://wa.me/917507271996?text=Hi%20Artisan%20Mate%2C%20I'd%20like%20to%20discuss%20an%20interior%20design%20project." target="_blank" rel="noopener">Prefer WhatsApp? Start there →</a></div>
-    <form class="project-form" action="https://formsubmit.co/kudvesayali.sk@gmail.com" method="POST">
+    <form class="project-form" action="https://formsubmit.co/ajax/kudvesayali.sk@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Artisan Mate Interior Design Enquiry">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_next" value="https://www.artisanmate.com/">
       <input type="hidden" name="_honey" value="">
+      <input type="hidden" name="_captcha" value="false">
       <div class="form-row"><label>Name<input required name="name" autocomplete="name"></label><label>WhatsApp / Phone<input required name="phone" autocomplete="tel"></label></div>
       <div class="form-row"><label>Email <span class="optional-label">(optional)</span><input type="email" name="email" autocomplete="email"></label><label>City / Town<input required name="location" placeholder="e.g. Mumbai, Pune, Nashik"></label></div>
       <label>What do you need?<select name="service" required><option value="" selected disabled>Select one</option><option>Interior consultation</option><option>Space planning</option><option>Complete interior design</option><option>Design review / second opinion</option><option>I'm not sure yet</option></select></label>
@@ -319,20 +320,62 @@ fbq('track', 'PageView');
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var leadForm = document.querySelector('.project-form');
-  if (leadForm) {
-    leadForm.addEventListener('submit', function (event) {
-      if (!leadForm.checkValidity()) {
-        return;
+  if (!leadForm) return;
+
+  leadForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    if (!leadForm.checkValidity()) {
+      leadForm.reportValidity();
+      return;
+    }
+
+    var submitButton = leadForm.querySelector('button[type="submit"]');
+    var originalButtonText = submitButton.innerHTML;
+    submitButton.disabled = true;
+    submitButton.innerHTML = 'Sending…';
+
+    try {
+      var response = await fetch(leadForm.action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(new FormData(leadForm)))
+      });
+
+      var data = await response.json();
+
+      if (!response.ok || data.success === false) {
+        throw new Error('Submission failed');
       }
-      event.preventDefault();
+
       if (typeof fbq === 'function') {
         fbq('track', 'Lead');
       }
-      window.setTimeout(function () {
-        HTMLFormElement.prototype.submit.call(leadForm);
-      }, 1500);
-    });
-  }
+
+      leadForm.innerHTML = '<div class="form-success" role="status" aria-live="polite">' +
+        '<div class="success-mark">✓</div>' +
+        '<p class="eyebrow">QUERY RECEIVED</p>' +
+        '<h3>Thank you for reaching out.</h3>' +
+        '<p>We have noted your query and will get back to you shortly.</p>' +
+        '<p class="success-small">If your project is urgent, you can also reach us directly on WhatsApp.</p>' +
+        '<a class="btn dark-btn" href="https://wa.me/917507271996?text=Hi%20Artisan%20Mate%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website." target="_blank" rel="noopener">Chat on WhatsApp <span>→</span></a>' +
+        '</div>';
+    } catch (error) {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonText;
+      var errorMessage = leadForm.querySelector('.form-error');
+      if (!errorMessage) {
+        errorMessage = document.createElement('p');
+        errorMessage.className = 'form-error';
+        errorMessage.setAttribute('role', 'alert');
+        leadForm.appendChild(errorMessage);
+      }
+      errorMessage.textContent = 'We could not send your enquiry right now. Please try again or contact us on WhatsApp.';
+    }
+  });
 });
 </script>
 </body>
