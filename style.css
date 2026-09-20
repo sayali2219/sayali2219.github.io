@@ -207,3 +207,11 @@
   .before-after-handle{width:50px;height:50px;font-size:20px}
   .transformation-hint{font-size:9px;margin-top:15px}
 }
+
+
+/* Final transformation slider sizing */
+.transformation .wrap{width:min(1120px,calc(100% - 48px));}
+.before-after{max-width:1120px;}
+.before-after-media{aspect-ratio:16/9;}
+.before-after-image{image-rendering:auto;}
+@media(max-width:900px){.transformation .wrap{width:calc(100% - 32px);}.before-after{max-width:100%;}}
