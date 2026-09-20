@@ -33,6 +33,8 @@ tabs.forEach(tab=>{
 
 const beforeAfter=document.querySelectorAll('[data-before-after]');
 
+const beforeAfter=document.querySelectorAll('[data-before-after]');
+
 const decodeHexToText=hex=>{
   const clean=hex.replace(/\s+/g,'');
   let out='';
@@ -134,6 +136,4 @@ beforeAfter.forEach(component=>{
   });
 
   render();
-  loadExactHallImage(beforeImage,'before');
-  loadExactHallImage(afterImage,'after');
 });
