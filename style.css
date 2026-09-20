@@ -210,8 +210,9 @@
 
 
 /* Final transformation slider sizing */
-.transformation .wrap{width:min(1120px,calc(100% - 48px));}
-.before-after{max-width:1120px;}
+/* Final transformation slider sizing v2 */
+.transformation .wrap{width:min(900px,calc(100% - 48px));}
+.before-after{max-width:900px;}
 .before-after-media{aspect-ratio:16/9;}
 .before-after-image{image-rendering:auto;}
 @media(max-width:900px){.transformation .wrap{width:calc(100% - 32px);}.before-after{max-width:100%;}}
