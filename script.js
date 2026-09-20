@@ -31,8 +31,50 @@ tabs.forEach(tab=>{
   });
 });
 
-
 const beforeAfter=document.querySelectorAll('[data-before-after]');
+
+const decodeHexToText=hex=>{
+  const clean=hex.replace(/\s+/g,'');
+  let out='';
+  for(let i=0;i<clean.length;i+=2){
+    out+=String.fromCharCode(parseInt(clean.slice(i,i+2),16));
+  }
+  return out;
+};
+
+const loadExactHallImage=async(image,type)=>{
+  const partCounts={before:12,after:11};
+  const parts=Array.from({length:partCounts[type]},(_,index)=>
+    'assets/hall-'+type+'-exact/part-'+String(index+1).padStart(3,'0')+'.txt'
+  );
+
+  try{
+    const responses=await Promise.all(
+      parts.map(path=>fetch(path,{cache:'no-store'}))
+    );
+    if(responses.some(response=>!response.ok)){
+      throw new Error('Exact hall image chunk request failed');
+    }
+
+    const encodedChunks=await Promise.all(responses.map(response=>response.text()));
+    const base64=encodedChunks.map(decodeHexToText).join('').trim();
+
+    if(!base64) throw new Error('Exact hall image data is empty');
+
+    image.src='data:image/jpeg;base64,'+base64;
+    await image.decode();
+  }catch(error){
+    // Fallback keeps the slider functional if a chunk ever fails to load.
+    const fallback=image.dataset.imageBase64;
+    if(fallback){
+      const response=await fetch(fallback,{cache:'force-cache'});
+      const base64=(await response.text()).trim();
+      image.src='data:image/webp;base64,'+base64;
+    }
+    console.error('Artisan Mate exact transformation image failed to load:',error);
+  }
+};
+
 beforeAfter.forEach(component=>{
   const media=component.querySelector('.before-after-media');
   const beforeImage=component.querySelector('.before-image');
@@ -42,81 +84,6 @@ beforeAfter.forEach(component=>{
 
   let value=50;
   let dragging=false;
-
-  const enhanceImage=async image=>{
-    const source=image.dataset.imageBase64;
-    if(!source) return;
-
-    try{
-      const response=await fetch(source,{cache:'force-cache'});
-      if(!response.ok) throw new Error('Image data request failed');
-
-      const base64=(await response.text()).trim();
-      image.src='data:image/webp;base64,'+base64;
-      await image.decode();
-
-      /*
-       * The current website copies are small source images. Resize them once at
-       * roughly 2x display resolution with the browser's high-quality scaler,
-       * then apply a restrained unsharp mask. This cannot invent missing detail,
-       * but it makes the existing photographic source visibly crisper without
-       * changing the slider layout or crop.
-       */
-      const displayWidth=Math.max(320,Math.round(media.clientWidth));
-      const targetWidth=Math.min(1800,Math.max(image.naturalWidth,displayWidth*2));
-      const targetHeight=Math.max(1,Math.round(image.naturalHeight*(targetWidth/image.naturalWidth)));
-
-      const canvas=document.createElement('canvas');
-      canvas.width=targetWidth;
-      canvas.height=targetHeight;
-
-      const ctx=canvas.getContext('2d',{willReadFrequently:true});
-      if(!ctx) return;
-
-      ctx.imageSmoothingEnabled=true;
-      ctx.imageSmoothingQuality='high';
-      ctx.drawImage(image,0,0,targetWidth,targetHeight);
-
-      const frame=ctx.getImageData(0,0,targetWidth,targetHeight);
-      const sourcePixels=frame.data;
-      const sharpened=new Uint8ClampedArray(sourcePixels);
-
-      const index=(x,y)=>(y*targetWidth+x)*4;
-
-      for(let y=1;y<targetHeight-1;y++){
-        for(let x=1;x<targetWidth-1;x++){
-          const i=index(x,y);
-          const top=index(x,y-1);
-          const bottom=index(x,y+1);
-          const left=index(x-1,y);
-          const right=index(x+1,y);
-
-          for(let channel=0;channel<3;channel++){
-            const center=sourcePixels[i+channel];
-            const neighbours=
-              sourcePixels[top+channel]+
-              sourcePixels[bottom+channel]+
-              sourcePixels[left+channel]+
-              sourcePixels[right+channel];
-
-            // Subtle 4-neighbour unsharp mask; avoids the crunchy halo effect.
-            sharpened[i+channel]=Math.max(
-              0,
-              Math.min(255,Math.round(center*5-neighbours))
-            );
-          }
-        }
-      }
-
-      frame.data.set(sharpened);
-      ctx.putImageData(frame,0,0);
-
-      const enhanced=canvas.toDataURL('image/webp',0.95);
-      image.src=enhanced;
-    }catch(error){
-      console.error('Artisan Mate transformation image failed to load:',error);
-    }
-  };
 
   const clamp=n=>Math.max(0,Math.min(100,n));
 
@@ -167,6 +134,6 @@ beforeAfter.forEach(component=>{
   });
 
   render();
-  enhanceImage(beforeImage);
-  enhanceImage(afterImage);
+  loadExactHallImage(beforeImage,'before');
+  loadExactHallImage(afterImage,'after');
 });
