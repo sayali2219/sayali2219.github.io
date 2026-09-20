@@ -43,9 +43,9 @@ const decodeHexToText=hex=>{
 };
 
 const loadExactHallImage=async(image,type)=>{
-  const partCounts={before:12,after:11};
+  const partCounts={before:14,after:15};
   const parts=Array.from({length:partCounts[type]},(_,index)=>
-    'assets/hall-'+type+'-exact/part-'+String(index+1).padStart(3,'0')+'.txt'
+    'assets/hall-'+type+'-1080/part-'+String(index+1).padStart(3,'0')+'.txt'
   );
 
   try{
