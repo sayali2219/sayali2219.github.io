@@ -31,26 +31,65 @@ tabs.forEach(tab=>{
   });
 });
 
+
 const beforeAfter=document.querySelectorAll('[data-before-after]');
 beforeAfter.forEach(component=>{
-  const range=component.querySelector('.before-after-range');
-  const before=component.querySelector('.before-after-before');
+  const media=component.querySelector('.before-after-media');
+  const beforeImage=component.querySelector('.before-image');
   const handle=component.querySelector('.before-after-handle');
-  if(!range||!before||!handle) return;
+  if(!media||!beforeImage||!handle) return;
 
-  const updateSlider=()=>{
-    const value=Number(range.value);
-    before.style.width=value+'%';
-    handle.style.left=value+'%';
-    handle.setAttribute('aria-valuenow',String(value));
+  let value=50;
+  let dragging=false;
+
+  const clamp=n=>Math.max(0,Math.min(100,n));
+
+  const render=()=>{
+    value=clamp(value);
+    component.style.setProperty('--split',value+'%');
+    handle.setAttribute('aria-valuenow',String(Math.round(value)));
   };
 
-  range.addEventListener('input',updateSlider);
-  range.addEventListener('change',updateSlider);
+  const setFromPointer=e=>{
+    const rect=media.getBoundingClientRect();
+    if(!rect.width) return;
+    value=clamp(((e.clientX-rect.left)/rect.width)*100);
+    render();
+  };
 
-  handle.addEventListener('click',()=>{
-    range.focus();
+  const startDrag=e=>{
+    dragging=true;
+    media.setPointerCapture?.(e.pointerId);
+    setFromPointer(e);
+    e.preventDefault();
+  };
+
+  const moveDrag=e=>{
+    if(!dragging) return;
+    setFromPointer(e);
+  };
+
+  const endDrag=()=>{
+    dragging=false;
+  };
+
+  media.addEventListener('pointerdown',startDrag);
+  media.addEventListener('pointermove',moveDrag);
+  media.addEventListener('pointerup',endDrag);
+  media.addEventListener('pointercancel',endDrag);
+  media.addEventListener('lostpointercapture',endDrag);
+
+  handle.addEventListener('keydown',e=>{
+    let next=value;
+    if(e.key==='ArrowLeft') next-=2;
+    else if(e.key==='ArrowRight') next+=2;
+    else if(e.key==='Home') next=0;
+    else if(e.key==='End') next=100;
+    else return;
+    e.preventDefault();
+    value=clamp(next);
+    render();
   });
 
-  updateSlider();
+  render();
 });
