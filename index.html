@@ -84,29 +84,26 @@ fbq('track', 'PageView');
   </div>
 </section>
 
-<section class="transformation wrap" id="transformations">
-  <div class="section-head transformation-head">
-    <div>
+<section class="transformation" id="transformations">
+  <div class="wrap">
+    <div class="transformation-intro">
       <p class="eyebrow">REAL TRANSFORMATIONS</p>
-      <h2>See what thoughtful design can change.</h2>
+      <h2>See the difference thoughtful design makes.</h2>
+      <p>Slide to explore how we turn everyday spaces into functional, beautiful homes.</p>
     </div>
-    <p>Drag the slider to move from a dated space toward a more considered, functional interior.</p>
-  </div>
-  <div class="before-after" data-before-after>
-    <div class="before-after-media">
-      <img class="before-after-image after-image" src="assets/kitchen-wide.jpg" alt="Modern contemporary interior designed by Artisan Mate">
-      <div class="before-after-before">
-        <img class="before-after-image" src="assets/kitchen-wide.jpg" alt="Dated interior before design transformation">
+    <div class="before-after" data-before-after>
+      <div class="before-after-media" aria-label="Before and after interior transformation">
+        <img class="before-after-image after-image" src="assets/transform-after.webp" alt="Modern contemporary living room after interior design">
+        <img class="before-after-image before-image" src="assets/transform-before.webp" alt="Old Indian living room before interior design">
+        <button class="before-after-handle" type="button" role="slider" tabindex="0"
+          aria-label="Before and after comparison"
+          aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span aria-hidden="true">‹&nbsp;&nbsp;›</span>
+        </button>
       </div>
-      <div class="before-after-label before-label">BEFORE</div>
-      <div class="before-after-label after-label">AFTER</div>
-      <button class="before-after-handle" type="button" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-        <span class="handle-arrows" aria-hidden="true">‹&nbsp;&nbsp;›</span>
-      </button>
-      <input class="before-after-range" type="range" min="0" max="100" value="50" aria-label="Before and after comparison">
     </div>
+    <p class="transformation-hint">Drag the slider to see the transformation <span>← →</span></p>
   </div>
-  <p class="transformation-hint">Drag the line to see the transformation <span>← →</span></p>
 </section>
 
 <section class="lead-entry wrap" id="space-review">
