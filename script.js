@@ -30,3 +30,27 @@ tabs.forEach(tab=>{
     });
   });
 });
+
+const beforeAfter=document.querySelectorAll('[data-before-after]');
+beforeAfter.forEach(component=>{
+  const range=component.querySelector('.before-after-range');
+  const before=component.querySelector('.before-after-before');
+  const handle=component.querySelector('.before-after-handle');
+  if(!range||!before||!handle) return;
+
+  const updateSlider=()=>{
+    const value=Number(range.value);
+    before.style.width=value+'%';
+    handle.style.left=value+'%';
+    handle.setAttribute('aria-valuenow',String(value));
+  };
+
+  range.addEventListener('input',updateSlider);
+  range.addEventListener('change',updateSlider);
+
+  handle.addEventListener('click',()=>{
+    range.focus();
+  });
+
+  updateSlider();
+});
