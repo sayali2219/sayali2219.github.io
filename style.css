@@ -59,3 +59,5 @@
 .process-grid article{border-right:0}
 .hero-note{font-size:10px}
 }
+
+.form-success{text-align:center;padding:30px 12px 20px}.success-mark{width:58px;height:58px;border:1px solid #a18862;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px;color:#667054}.form-success h3{font:500 38px var(--serif);margin-bottom:10px}.form-success>p:not(.eyebrow){color:var(--muted);max-width:430px;margin-left:auto;margin-right:auto}.form-success .success-small{font-size:12px;margin-top:24px}.form-success .btn{margin-top:10px}.form-error{color:#9b3d32!important;font-size:12px!important;text-align:center;margin-top:14px}
