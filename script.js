@@ -36,17 +36,32 @@ const beforeAfter=document.querySelectorAll('[data-before-after]');
 beforeAfter.forEach(component=>{
   const media=component.querySelector('.before-after-media');
   const beforeImage=component.querySelector('.before-image');
+  const afterImage=component.querySelector('.after-image');
   const handle=component.querySelector('.before-after-handle');
-  if(!media||!beforeImage||!handle) return;
+  if(!media||!beforeImage||!afterImage||!handle) return;
 
   let value=50;
   let dragging=false;
+
+  const loadImageFromBase64=async image=>{
+    const source=image.dataset.imageBase64;
+    if(!source) return;
+    try{
+      const response=await fetch(source,{cache:'force-cache'});
+      if(!response.ok) throw new Error('Image data request failed');
+      const base64=(await response.text()).trim();
+      image.src='data:image/webp;base64,'+base64;
+    }catch(error){
+      console.error('Artisan Mate transformation image failed to load:',error);
+    }
+  };
 
   const clamp=n=>Math.max(0,Math.min(100,n));
 
   const render=()=>{
     value=clamp(value);
     component.style.setProperty('--split',value+'%');
+    handle.style.left=value+'%';
     handle.setAttribute('aria-valuenow',String(Math.round(value)));
   };
 
@@ -69,9 +84,7 @@ beforeAfter.forEach(component=>{
     setFromPointer(e);
   };
 
-  const endDrag=()=>{
-    dragging=false;
-  };
+  const endDrag=()=>{ dragging=false; };
 
   media.addEventListener('pointerdown',startDrag);
   media.addEventListener('pointermove',moveDrag);
@@ -92,4 +105,6 @@ beforeAfter.forEach(component=>{
   });
 
   render();
+  loadImageFromBase64(beforeImage);
+  loadImageFromBase64(afterImage);
 });
