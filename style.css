@@ -216,3 +216,62 @@
 .before-after-media{aspect-ratio:16/9;}
 .before-after-image{image-rendering:auto;}
 @media(max-width:900px){.transformation .wrap{width:calc(100% - 32px);}.before-after{max-width:100%;}}
+
+/* GitHub img-comparison-slider integration — mobile-first */
+.before-after-github{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  overflow:hidden;
+  background:#d9d2c5;
+  box-shadow:0 20px 55px rgba(21,22,18,.10);
+}
+.before-after-github img-comparison-slider{
+  display:block;
+  width:100%;
+  --divider-width:2px;
+  --divider-color:#fff;
+  --default-handle-width:52px;
+  --default-handle-color:#fff;
+}
+.before-after-github img-comparison-slider img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
+}
+.transformation-labels{
+  max-width:900px;
+  margin:10px auto 0;
+  display:flex;
+  justify-content:space-between;
+  padding:0 8px;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.18em;
+}
+.transformation-hint{
+  margin-top:16px;
+}
+@media(max-width:620px){
+  .before-after-github{
+    width:100%;
+    box-shadow:0 14px 34px rgba(21,22,18,.10);
+  }
+  .before-after-github img-comparison-slider{
+    --default-handle-width:46px;
+  }
+  .before-after-github img-comparison-slider img{
+    aspect-ratio:4/3;
+  }
+  .transformation-labels{
+    padding:0 4px;
+    font-size:8px;
+  }
+  .transformation-hint{
+    font-size:9px;
+    line-height:1.5;
+  }
+}
