@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Design Studio | Artisan Mate</title>
+<meta name="description" content="Upload a room photo and explore an AI-assisted interior design concept with Artisan Mate.">
+<link rel="canonical" href="https://www.artisanmate.com/design-studio.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-studio.css?v=20260923-1">
+<script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+<header class="studio-nav">
+  <a href="index.html" class="studio-brand"><img src="assets/logo-transparent.png" alt="Artisan Mate"></a>
+  <a href="index.html" class="back-link">← Back to Artisan Mate</a>
+</header>
+
+<main>
+<section class="studio-hero">
+  <div class="studio-wrap">
+    <p class="eyebrow">ARTISAN MATE / AI DESIGN STUDIO</p>
+    <h1>See what your space<br><em>could become.</em></h1>
+    <p>Upload a photo of your room. Choose a direction. Get an AI-assisted visual concept while keeping your room's perspective and structure in mind.</p>
+  </div>
+</section>
+
+<section class="studio-wrap studio-app" id="studioApp">
+  <div class="step-row">
+    <div class="step active"><span>01</span> Upload</div>
+    <div class="step"><span>02</span> Style</div>
+    <div class="step"><span>03</span> Visualize</div>
+  </div>
+
+  <div class="workspace">
+    <div class="controls">
+      <div class="panel-heading">
+        <p class="eyebrow">YOUR SPACE</p>
+        <h2>Start with a room photo.</h2>
+      </div>
+
+      <label class="upload-box" id="uploadBox" for="roomInput">
+        <input id="roomInput" type="file" accept="image/jpeg,image/png,image/webp">
+        <span class="upload-icon">+</span>
+        <strong>Upload your room</strong>
+        <small>JPG, PNG or WebP · Best results with a clear room photo</small>
+      </label>
+
+      <div id="fileName" class="file-name" hidden></div>
+
+      <div class="field-group">
+        <label for="roomType">Room</label>
+        <select id="roomType">
+          <option>Living room</option>
+          <option>Bedroom</option>
+          <option>Kitchen</option>
+          <option>Dining area</option>
+          <option>Home office</option>
+          <option>Bathroom</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Design direction</label>
+        <div class="style-grid" id="styleGrid">
+          <button type="button" class="style-chip selected" data-style="Warm contemporary">Warm Contemporary</button>
+          <button type="button" class="style-chip" data-style="Modern minimalist">Modern Minimal</button>
+          <button type="button" class="style-chip" data-style="Japandi">Japandi</button>
+          <button type="button" class="style-chip" data-style="Contemporary Indian">Contemporary Indian</button>
+          <button type="button" class="style-chip" data-style="Quiet luxury">Quiet Luxury</button>
+          <button type="button" class="style-chip" data-style="Natural earthy">Natural &amp; Earthy</button>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="details">Anything specific? <span>Optional</span></label>
+        <textarea id="details" rows="3" maxlength="400" placeholder="e.g. More storage, lighter colours, keep the existing sofa, warm lighting..."></textarea>
+      </div>
+
+      <button class="generate-btn" id="generateBtn" type="button" disabled>Visualize My Space <span>→</span></button>
+      <p class="privacy-note">Your photo is used for this visualization request. Don't upload sensitive or private documents.</p>
+    </div>
+
+    <div class="preview">
+      <div class="preview-top">
+        <div>
+          <p class="eyebrow">PREVIEW</p>
+          <h2 id="previewTitle">Your room, reimagined.</h2>
+        </div>
+        <button id="resetBtn" class="reset-btn" type="button" hidden>Start again</button>
+      </div>
+
+      <div class="canvas" id="canvas">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-mark">AM</div>
+          <h3>Your design will appear here.</h3>
+          <p>Upload a room photo and choose a style to create your concept.</p>
+        </div>
+        <img id="sourcePreview" class="source-preview" alt="Uploaded room preview" hidden>
+        <div class="loading-state" id="loadingState" hidden>
+          <div class="loader"></div>
+          <p>Creating your design concept…</p>
+          <small>This can take a little while.</small>
+        </div>
+        <img id="resultImage" class="result-image" alt="AI-generated interior design concept" hidden>
+        <div class="result-actions" id="resultActions" hidden>
+          <a class="result-cta" href="index.html#consult">Want a professional design? Talk to Artisan Mate →</a>
+          <button type="button" id="downloadBtn">Save concept</button>
+        </div>
+      </div>
+      <p class="disclaimer">AI visualization is an exploratory concept, not a construction drawing or guaranteed representation of the final built space.</p>
+    </div>
+  </div>
+</section>
+
+<section class="studio-info">
+  <div class="studio-wrap info-grid">
+    <div>
+      <p class="eyebrow">WHAT THIS IS FOR</p>
+      <h2>A starting point, not a replacement for a designer.</h2>
+    </div>
+    <div>
+      <p>Use the visualizer to explore a direction before committing to materials, furniture or a larger design engagement.</p>
+      <p>When you're ready to turn the idea into a practical plan, Artisan Mate can take over with professional space planning, design and documentation.</p>
+      <a href="index.html#consult">Discuss your project →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="studio-footer">
+  <div class="studio-wrap">
+    <img src="assets/logo-transparent.png" alt="Artisan Mate">
+    <p>Interior design &amp; consultation for thoughtful Indian homes.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const input=document.getElementById('roomInput');
+  const uploadBox=document.getElementById('uploadBox');
+  const fileName=document.getElementById('fileName');
+  const generateBtn=document.getElementById('generateBtn');
+  const roomType=document.getElementById('roomType');
+  const details=document.getElementById('details');
+  const styleGrid=document.getElementById('styleGrid');
+  const emptyState=document.getElementById('emptyState');
+  const sourcePreview=document.getElementById('sourcePreview');
+  const resultImage=document.getElementById('resultImage');
+  const loadingState=document.getElementById('loadingState');
+  const resultActions=document.getElementById('resultActions');
+  const resetBtn=document.getElementById('resetBtn');
+  const downloadBtn=document.getElementById('downloadBtn');
+  const previewTitle=document.getElementById('previewTitle');
+  let file=null;
+  let imageData=null;
+  let selectedStyle='Warm contemporary';
+
+  styleGrid.addEventListener('click',e=>{
+    const btn=e.target.closest('.style-chip');
+    if(!btn) return;
+    styleGrid.querySelectorAll('.style-chip').forEach(x=>x.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedStyle=btn.dataset.style;
+  });
+
+  input.addEventListener('change',()=>{
+    file=input.files && input.files[0];
+    if(!file) return;
+    if(file.size>12*1024*1024){
+      alert('Please choose an image under 12 MB.');
+      input.value='';
+      file=null;
+      return;
+    }
+    fileName.hidden=false;
+    fileName.textContent=file.name;
+    const reader=new FileReader();
+    reader.onload=()=>{
+      imageData=reader.result;
+      sourcePreview.src=imageData;
+      sourcePreview.hidden=false;
+      emptyState.hidden=true;
+      resultImage.hidden=true;
+      resultActions.hidden=true;
+      generateBtn.disabled=false;
+      resetBtn.hidden=false;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  generateBtn.addEventListener('click',async()=>{
+    if(!imageData) return;
+    generateBtn.disabled=true;
+    loadingState.hidden=false;
+    resultImage.hidden=true;
+    resultActions.hidden=true;
+    previewTitle.textContent='Creating your concept…';
+
+    const prompt=`Redesign this uploaded ${roomType.value.toLowerCase()} as a photorealistic interior design concept for an Indian home.
+Design direction: ${selectedStyle}.
+${details.value ? 'Client notes: '+details.value : ''}
+Preserve the room's fundamental architecture, camera viewpoint, walls, windows, doors and overall spatial proportions. Do not invent a different room or change the camera angle. Improve furniture, lighting, materials, colours, storage and styling in a realistic, buildable-looking way. Avoid excessive luxury, unrealistic furniture scale, floating objects, distorted architecture, text, logos or people. Make the result feel premium, warm, practical and appropriate for a contemporary Indian home. Keep the composition close to the uploaded photo so the user can compare the result with the original.`;
+
+    try{
+      const response=await puter.ai.txt2img({
+        prompt,
+        model:'gemini-3.1-flash-image',
+        input_image:imageData,
+        ratio:{w:4,h:3},
+        quality:'1K'
+      });
+      const url=response && (response.src || response.image_url || (response.images && response.images[0] && (response.images[0].url || response.images[0].image_url)));
+      if(!url) throw new Error('No image returned');
+      resultImage.src=typeof url==='string' ? url : url.url;
+      resultImage.hidden=false;
+      sourcePreview.hidden=true;
+      resultActions.hidden=false;
+      previewTitle.textContent='Your concept is ready.';
+    }catch(err){
+      console.error(err);
+      alert('The visualization could not be generated right now. Please try again.');
+      previewTitle.textContent='Your room, reimagined.';
+    }finally{
+      loadingState.hidden=true;
+      generateBtn.disabled=false;
+    }
+  });
+
+  resetBtn.addEventListener('click',()=>{
+    input.value='';
+    file=null;
+    imageData=null;
+    fileName.hidden=true;
+    generateBtn.disabled=true;
+    sourcePreview.hidden=true;
+    resultImage.hidden=true;
+    resultActions.hidden=true;
+    emptyState.hidden=false;
+    resetBtn.hidden=true;
+    previewTitle.textContent='Your room, reimagined.';
+  });
+
+  downloadBtn.addEventListener('click',()=>{
+    if(!resultImage.src) return;
+    const a=document.createElement('a');
+    a.href=resultImage.src;
+    a.download='artisan-mate-ai-design.png';
+    a.click();
+  });
+})();
+</script>
+</body>
+</html>
