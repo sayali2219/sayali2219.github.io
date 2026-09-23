@@ -14,7 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/logo-transparent.png" type="image/png">
-<link rel="stylesheet" href="style.css?v=20260921-2">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css">
+<link rel="stylesheet" href="style.css?v=20260923-3">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -89,20 +90,16 @@ fbq('track', 'PageView');
     <div class="transformation-intro">
       <p class="eyebrow">REAL TRANSFORMATIONS</p>
       <h2>See the difference thoughtful design makes.</h2>
-      <p>Slide to explore how we turn everyday spaces into functional, beautiful homes.</p>
+      <p>Drag the divider to move from the original space to the finished design.</p>
     </div>
-    <div class="before-after" data-before-after>
-      <div class="before-after-media" aria-label="Before and after interior transformation">
-        <img class="before-after-image after-image" src="assets/transform-after-hq.webp" alt="Modern contemporary living room after interior design">
-        <img class="before-after-image before-image" src="assets/transform-before-hq.webp" alt="Old Indian living room before interior design">
-        <button class="before-after-handle" type="button" role="slider" tabindex="0"
-          aria-label="Before and after comparison"
-          aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-          <span aria-hidden="true">‹&nbsp;&nbsp;›</span>
-        </button>
-      </div>
+    <div class="before-after-github" aria-label="Interactive before and after interior transformation">
+      <img-comparison-slider value="50" hover="false" keyboard="enabled">
+        <img slot="first" src="assets/transform-before-hq.webp" alt="Old Indian living room before interior design" width="1600" height="900" loading="lazy">
+        <img slot="second" src="assets/transform-after-hq.webp" alt="Modern contemporary living room after interior design" width="1600" height="900" loading="lazy">
+      </img-comparison-slider>
     </div>
-    <p class="transformation-hint">Drag the slider to see the transformation <span>← →</span></p>
+    <div class="transformation-labels" aria-hidden="true"><span>BEFORE</span><span>AFTER</span></div>
+    <p class="transformation-hint">Drag on mobile or use ← → on desktop <span>•</span> Tap and hold to explore</p>
   </div>
 </section>
 
@@ -338,7 +335,8 @@ fbq('track', 'PageView');
 
 <footer class="footer"><div class="wrap foot"><div><img src="assets/logo-transparent.png" alt="Artisan Mate"><p>Interior design &amp; consultation for thoughtful Indian homes.</p></div><div class="foot-links"><a href="#services">Services</a><a href="#guides">Guides</a><a href="#faqs">FAQs</a><a href="mailto:kudvesayali.sk@gmail.com">Email</a><a href="https://wa.me/917507271996" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.linkedin.com/in/sayali-kudve-515366223" target="_blank" rel="noopener">LinkedIn</a></div></div><div class="wrap copyright">© 2026 Artisan Mate. All rights reserved.</div></footer>
 <a class="whatsapp" href="https://wa.me/917507271996" target="_blank" rel="noopener" aria-label="Chat with Artisan Mate on WhatsApp">WhatsApp <span>↗</span></a>
-<script src="script.js?v=20260921-5"></script>
+<script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js" defer></script>
+<script src="script.js?v=20260923-3" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   var leadForm = document.querySelector('.project-form');
