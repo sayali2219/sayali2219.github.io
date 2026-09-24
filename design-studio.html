@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="design-studio.css?v=20260923-1">
+<link rel="stylesheet" href="design-studio.css?v=20260924-2">
 </head>
 <body>
 <header class="studio-nav">
@@ -206,13 +206,26 @@ ${details.value ? 'Client notes: '+details.value : ''}
 Preserve the room's fundamental architecture, camera viewpoint, walls, windows, doors and overall spatial proportions. Do not invent a different room or change the camera angle. Improve furniture, lighting, materials, colours, storage and styling in a realistic, buildable-looking way. Avoid excessive luxury, unrealistic furniture scale, floating objects, distorted architecture, text, logos or people. Make the result feel premium, warm, practical and appropriate for a contemporary Indian home. Keep the composition close to the uploaded photo so the user can compare the result with the original.`;
 
     try{
-      const response=await fetch('https://api.artisanmate.com/generate-design',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({image:imageData.split(',')[1],mimeType:imageMimeType,prompt})
-      });
-      const payload=await response.json();
-      if(!response.ok || !payload.image) throw new Error(payload.error || 'No image returned');
+      const controller=new AbortController();
+      const timeout=setTimeout(()=>controller.abort(),90000);
+      let response;
+      try{
+        response=await fetch('https://api.artisanmate.com/generate-design',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({image:imageData.split(',')[1],mimeType:imageMimeType,prompt}),
+          signal:controller.signal
+        });
+      }catch(fetchError){
+        if(fetchError.name==='AbortError'){
+          throw new Error('The AI service took too long to respond. Please try again.');
+        }
+        throw new Error('The AI service is not reachable yet. Please try again shortly.');
+      }finally{
+        clearTimeout(timeout);
+      }
+      const payload=await response.json().catch(()=>({}));
+      if(!response.ok || !payload.image) throw new Error(payload.error || payload.detail || 'No image returned');
       resultImage.src=payload.image;
       resultImage.hidden=false;
       sourcePreview.hidden=true;
@@ -220,7 +233,7 @@ Preserve the room's fundamental architecture, camera viewpoint, walls, windows, 
       previewTitle.textContent='Your concept is ready.';
     }catch(err){
       console.error(err);
-      alert('The visualization could not be generated right now. Please try again.');
+      alert(err.message || 'The visualization could not be generated right now. Please try again.');
       previewTitle.textContent='Your room, reimagined.';
     }finally{
       loadingState.hidden=true;
