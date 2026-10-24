@@ -95,7 +95,7 @@
 .project-form input::placeholder,.project-form textarea::placeholder{color:#8a8b82;opacity:1}
 .project-form button{min-height:50px;margin-top:6px}
 .form-status{min-height:1.4em;line-height:1.6}
-.site-footer .brand-logo{width:132px;max-width:132px}
+.site-footer .brand-logo{width:132px;max-width:132px;filter:brightness(0) invert(1)}
 .footer-links a:hover,.footer-links a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
 .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
