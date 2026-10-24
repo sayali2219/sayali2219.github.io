@@ -219,3 +219,13 @@ body.lead-popup-open{overflow:hidden}
   .founder-copy h2{font-size:clamp(2.8rem,11vw,4rem);margin-bottom:24px}
   .founder-quote{font-size:1.8rem;padding-left:16px}
 }
+
+/* Interior-first portfolio groups */
+.portfolio-group{margin-top:24px}
+.portfolio-group[hidden]{display:none!important}
+.portfolio-group+.portfolio-group{margin-top:76px;padding-top:44px;border-top:1px solid var(--line)}
+.portfolio-group-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:26px}
+.portfolio-group-head h3{margin:0;font-size:clamp(2rem,3.5vw,3.4rem);font-weight:500;line-height:1;letter-spacing:-.025em}
+.portfolio-group-head>p{max-width:420px;margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
+.portfolio-note{margin-top:36px}
+@media(max-width:760px){.portfolio-group+.portfolio-group{margin-top:48px;padding-top:30px}.portfolio-group-head{display:block}.portfolio-group-head>p{margin-top:14px}.portfolio-group-head h3{font-size:2.3rem}}
