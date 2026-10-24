@@ -40,7 +40,7 @@ if(leadPopup){
       leadPopup.setAttribute('aria-hidden','false');
       document.body.classList.add('lead-popup-open');
       if(closeButton)closeButton.focus();
-    },5000);
+    },3000);
   }
 }
 });
