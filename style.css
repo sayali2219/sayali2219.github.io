@@ -34,3 +34,110 @@
 .site-footer .brand-logo{width:120px;height:auto;max-width:120px;filter:invert(1)}
 @media(max-width:900px){.brand-logo{width:88px;max-width:88px}.site-footer .brand-logo{width:118px;max-width:118px}}
 @media(max-width:620px){.brand-logo{width:88px;max-width:88px}.site-footer .brand-logo{width:118px;max-width:118px}}
+
+
+/* Homepage UX refinement — October 2026 */
+:root{scroll-padding-top:90px}
+.skip-link{position:absolute;left:16px;top:-60px;z-index:100;background:var(--ink);color:#fff;padding:12px 16px;font-size:.85rem}
+.skip-link:focus{top:12px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.site-header{min-height:78px;gap:28px}
+.site-header .brand-logo{width:104px;max-width:104px}
+.site-nav{gap:clamp(14px,2vw,26px)}
+.site-nav .nav-cta{padding:11px 15px;border:1px solid var(--ink);opacity:1}
+.site-nav .nav-cta:hover{background:var(--ink);color:#fff}
+.hero{min-height:calc(100svh - 78px);gap:clamp(38px,6vw,92px)}
+.hero-copy{max-width:680px}
+.hero h1{max-width:760px}
+.hero-lede{line-height:1.75}
+.intro{padding-top:86px;padding-bottom:88px}
+.section{scroll-margin-top:86px}
+.section-head{margin-bottom:38px}
+.portfolio-note{align-items:center}
+.filter{min-height:40px;border-radius:0}
+.filter:focus-visible{outline-offset:3px}
+.project-card h3{line-height:1.02}
+.project-card p{line-height:1.6;max-width:42ch}
+.architecture-section .section-head{margin-bottom:48px}
+.architecture-section .arch-feature{grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:clamp(32px,7vw,104px);align-items:center}
+.architecture-section .arch-feature>.reveal{aspect-ratio:4/3;overflow:hidden;background:#454a45}
+.architecture-section .arch-feature>.reveal img{width:100%;height:100%;object-fit:cover}
+.architecture-section .arch-copy{padding:0}
+.architecture-section .arch-copy h3{font-size:clamp(2.7rem,4vw,4.1rem);line-height:1}
+.architecture-section .arch-copy p{line-height:1.8}
+.relation{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr);gap:clamp(36px,7vw,100px);align-items:end;background:var(--paper-2)}
+.relation h2{font-size:clamp(2.8rem,4.7vw,5.3rem);line-height:.99}
+.relation-actions>p{max-width:440px;color:var(--muted);line-height:1.8}
+.relation .hero-actions{flex-wrap:wrap;gap:12px;margin-top:28px}
+.button-outline{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.button-outline:hover{background:var(--ink);color:#fff}
+.interiors-section .section-note{max-width:390px;line-height:1.75}
+.service-grid article{transition:background .25s ease}
+.service-grid article:hover{background:rgba(255,255,255,.28)}
+.service-grid h3{line-height:1.05}
+.service-grid p,.steps p{line-height:1.75}
+.steps h3{line-height:1.05}
+.transformation{padding-bottom:96px}
+.transformation .section-head{align-items:end}
+.transformation .section-note{line-height:1.7}
+.before-after-github{overflow:hidden}
+.before-after-github img-comparison-slider{aspect-ratio:16/9;max-height:680px}
+.before-after-github img-comparison-slider img{width:100%;height:100%;object-fit:cover}
+.transformation-labels{width:100%;padding:0 2px}
+.about{align-items:center}
+.about>div:last-child{line-height:1.85}
+.contact{align-items:start}
+.contact-copy>p{line-height:1.8}
+.contact-copy .contact-location{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.project-form{gap:24px 28px}
+.project-form label{display:block;line-height:1.6}
+.project-form input,.project-form textarea,.project-form select{font-size:.95rem;padding:13px 0}
+.project-form input::placeholder,.project-form textarea::placeholder{color:#8a8b82;opacity:1}
+.project-form button{min-height:50px;margin-top:6px}
+.form-status{min-height:1.4em;line-height:1.6}
+.site-footer .brand-logo{width:132px;max-width:132px}
+.footer-links a:hover,.footer-links a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  .site-header{min-height:70px}
+  .site-header .brand-logo{width:90px;max-width:90px}
+  .hero{min-height:auto;padding-top:72px;padding-bottom:72px}
+  .relation{grid-template-columns:1fr;gap:32px}
+  .architecture-section .arch-feature{grid-template-columns:1fr;gap:34px}
+  .architecture-section .arch-copy{max-width:680px}
+  .before-after-github img-comparison-slider{aspect-ratio:4/3}
+  .site-footer .brand-logo{width:118px;max-width:118px}
+}
+@media(max-width:620px){
+  .site-header{padding:12px 5vw}
+  .site-header .brand-logo{width:84px;max-width:84px}
+  .site-nav{top:61px}
+  .hero{gap:34px;padding-top:58px;padding-bottom:48px}
+  h1{font-size:clamp(3.25rem,15vw,4.65rem);line-height:.94}
+  .hero-lede{font-size:1rem}
+  .hero-caption{font-size:.57rem;gap:12px}
+  .intro{padding-top:56px;padding-bottom:58px}
+  .section{padding-top:66px;padding-bottom:66px}
+  .section-head{margin-bottom:26px}
+  .statement h2,.section h2{font-size:clamp(2.65rem,11vw,4rem)}
+  .filters{gap:6px;margin-bottom:24px}
+  .filter{padding:9px 10px;font-size:.61rem}
+  .project-grid{gap:30px}
+  .project-card h3{font-size:2rem}
+  .architecture-section .arch-copy h3{font-size:2.65rem}
+  .relation h2{font-size:clamp(2.65rem,10vw,3.8rem)}
+  .relation .hero-actions{align-items:stretch}
+  .relation .hero-actions .button{width:100%}
+  .before-after-github img-comparison-slider{aspect-ratio:4/3}
+  .transformation{padding-bottom:68px}
+  .project-form{gap:19px}
+  .site-footer{gap:24px;padding:38px 5vw}
+  .footer-links{gap:14px}
+  .site-footer .brand-logo{width:112px;max-width:112px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
