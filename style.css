@@ -195,7 +195,7 @@ body.lead-popup-open{overflow:hidden}
 /* Founder / About section */
 .founder-section{display:grid;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr);gap:clamp(42px,8vw,112px);align-items:center;background:var(--paper)}
 .founder-portrait{max-width:520px;width:100%;margin:0}
-.founder-portrait img{display:block;width:100%;aspect-ratio:4/5;max-height:590px;object-fit:cover;object-position:center 43%;background:#d3d0c8;filter:grayscale(100%)}
+.founder-portrait img{display:block;width:100%;aspect-ratio:4/5;max-height:590px;object-fit:cover;object-position:center 43%;background:#d3d0c8;filter:none}
 .founder-portrait-caption{display:flex;justify-content:space-between;gap:16px;margin:12px 0 0;padding-top:11px;border-top:1px solid var(--line);font-size:.61rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
 .founder-portrait-caption span{color:var(--olive)}
 .founder-copy{max-width:680px}
