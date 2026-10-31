@@ -1,20 +1,23 @@
-# Artisan Mate — Website v3
+# Artisan Mate Website
 
-A static, premium architecture + interiors portfolio website for Artisan Mate.
+Static portfolio and service website for Artisan Mate, a Mumbai-based interior design and architecture practice.
 
-## Design changes
-- Home page is intentionally minimal and image-led.
-- Interior renders are the visual focus of the home page.
-- No 2D drawings are displayed on the home page.
-- Architectural project details open in a full-screen project viewer.
-- Logo uses a transparent PNG with the original Artisan Mate mark.
-- No website-builder subscription is required.
+## Main pages
+- `index.html` — home, portfolio, services, founder profile and project enquiry form.
+- `interior-design-mumbai.html` — residential interior design service page, process, project scope and FAQs.
+- `privacy.html` — website enquiry and measurement privacy notice.
+- `project-*.html` — individual interior and architecture visual-study pages.
+- `style.css` and `script.js` — shared visual system and front-end behaviour.
+- `assets/` — brand, portfolio and project imagery.
+- `robots.txt` and `sitemap.xml` — crawl directives and canonical page inventory.
 
-## Free hosting
-This is a static site and can be hosted free on GitHub Pages. The included `CNAME` points to `www.artisanmate.com`.
+## Hosting
+The static website is intended for GitHub Pages. The `CNAME` file points to `www.artisanmate.com`.
 
-## Files
-- `index.html` — page structure/content
-- `style.css` — design and responsive layout
-- `script.js` — navigation and project viewer
-- `assets/` — images and portfolio PDF
+## Positioning
+Artisan Mate leads with residential interior design, space planning and consultation in Mumbai. The core offer is design-first: clients receive the agreed design deliverables and remain free to appoint their own execution contractor. Turnkey execution is not advertised as a standard service.
+
+## SEO
+The site uses page-specific titles and descriptions, canonical URLs, social-sharing metadata, structured data on relevant pages, descriptive image alternative text, internal links, an XML sitemap and robots.txt. These measures improve crawlability and page relevance but do not guarantee rankings.
+
+After deployment, test the enquiry form and WhatsApp links, validate structured data, run PageSpeed Insights, and submit the updated sitemap in Google Search Console.
