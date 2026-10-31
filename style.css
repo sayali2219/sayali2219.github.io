@@ -229,3 +229,59 @@ body.lead-popup-open{overflow:hidden}
 .portfolio-group-head>p{max-width:420px;margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
 .portfolio-note{margin-top:36px}
 @media(max-width:760px){.portfolio-group+.portfolio-group{margin-top:48px;padding-top:30px}.portfolio-group-head{display:block}.portfolio-group-head>p{margin-top:14px}.portfolio-group-head h3{font-size:2.3rem}}
+
+
+/* Artisan Mate service page, enquiry and privacy improvements */
+.services-link{margin-top:24px}
+.service-hero{min-height:auto;padding-top:7vh;padding-bottom:7vh}
+.service-hero .hero-frame{aspect-ratio:4/5;max-height:640px}
+.service-detail-section{background:#ebe6da}
+.service-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.service-detail-card{padding:28px;min-height:245px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.service-detail-card .num,.clarity-number{font-size:.68rem;letter-spacing:.12em;color:var(--muted)}
+.service-detail-card h3{font-size:2rem;margin:40px 0 12px;line-height:1.05}
+.service-detail-card p,.clarity-grid p{font-size:.88rem;color:var(--muted);line-height:1.8;margin:0}
+.clarity-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--line)}
+.clarity-grid>div{padding:24px 0;border-bottom:1px solid var(--line)}
+.clarity-grid h3{font-size:2rem;margin:28px 0 10px;line-height:1.05}
+.service-disclaimer{max-width:900px;margin:24px 0 0;padding:18px 20px;border-left:2px solid var(--gold);background:rgba(255,255,255,.38);font-size:.82rem;line-height:1.8;color:var(--muted)}
+.service-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;border-top:1px solid var(--line)}
+.service-steps article{padding:24px 0;border-bottom:1px solid var(--line)}
+.service-steps article>span{font-size:.68rem;letter-spacing:.12em;color:var(--muted)}
+.service-steps h3{font-size:2.1rem;margin:35px 0 12px}
+.service-steps p{font-size:.86rem;color:var(--muted);line-height:1.8}
+.service-work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.service-work-grid a{display:block}
+.service-work-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.service-work-grid span{display:block;padding:13px 0;border-bottom:1px solid var(--line);font-size:.78rem;letter-spacing:.05em}
+.service-faq{background:#ebe6da}
+.service-faq details{border-top:1px solid var(--line);padding:21px 0}
+.service-faq details:last-child{border-bottom:1px solid var(--line)}
+.service-faq summary{cursor:pointer;list-style:none;font-family:var(--serif);font-size:1.65rem;font-weight:600;display:flex;justify-content:space-between;gap:20px}
+.service-faq summary::-webkit-details-marker{display:none}
+.service-faq summary::after{content:"+";font-family:var(--sans);font-size:1.1rem;color:var(--muted)}
+.service-faq details[open] summary::after{content:"−"}
+.service-faq details p{max-width:850px;margin:14px 0 0;color:var(--muted);font-size:.92rem;line-height:1.85}
+.service-final-cta{background:#1f2422;color:#f5f1e8}
+.service-final-cta .eyebrow,.service-final-cta>p:not(.eyebrow){color:#b9c0b4}
+.service-final-cta h2{max-width:850px;font-size:clamp(3rem,6vw,5.8rem);margin-bottom:20px}
+.service-final-cta .button-dark{background:#f5f1e8;color:#1f2422}
+.service-final-cta .text-link{border-color:#f5f1e8}
+.privacy-content{max-width:900px;margin:0 auto}
+.privacy-content h2{font-size:2.4rem;margin:36px 0 12px}
+.privacy-content p{max-width:820px;color:var(--muted);line-height:1.9}
+.privacy-content a{border-bottom:1px solid currentColor}
+.consent-row{display:flex;align-items:flex-start;gap:11px;text-transform:none!important;letter-spacing:0!important;font-size:.78rem!important;line-height:1.6}
+.project-form .consent-row input{width:17px;min-width:17px;height:17px;margin:2px 0 0;accent-color:var(--olive)}
+.consent-row a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){
+  .service-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .service-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .service-detail-grid,.clarity-grid,.service-steps,.service-work-grid{grid-template-columns:1fr}
+  .service-detail-card{min-height:0;padding:22px}
+  .service-detail-card h3{margin-top:25px}
+  .service-faq summary{font-size:1.35rem}
+  .service-hero{padding-top:56px;padding-bottom:56px}
+}
