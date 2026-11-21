@@ -229,3 +229,22 @@ body.lead-popup-open{overflow:hidden}
 .portfolio-group-head>p{max-width:420px;margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
 .portfolio-note{margin-top:36px}
 @media(max-width:760px){.portfolio-group+.portfolio-group{margin-top:48px;padding-top:30px}.portfolio-group-head{display:block}.portfolio-group-head>p{margin-top:14px}.portfolio-group-head h3{font-size:2.3rem}}
+
+/* Supplied residential client visualisations */
+.client-work-disclosure{padding:22px 26px;background:#ebe6da;border-left:3px solid var(--olive);margin:0 0 70px;max-width:900px}
+.client-work-disclosure strong{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+.client-work-disclosure p{margin:0;color:var(--muted);font-size:.9rem}
+.client-room{padding:58px 0;border-top:1px solid var(--line);scroll-margin-top:100px}
+.client-room-heading{display:grid;grid-template-columns:1fr .8fr;gap:8vw;align-items:end;margin-bottom:26px}
+.client-room-heading h2{font-size:clamp(2.7rem,5vw,5rem);margin:0}
+.client-room-heading>p{max-width:480px;color:var(--muted);margin:0}
+.client-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.client-gallery img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#dfdbd0}
+.client-gallery--feature{grid-template-columns:1.25fr .75fr}
+.client-gallery--feature img{aspect-ratio:4/3}
+.client-gallery--single{grid-template-columns:minmax(0,1fr)}
+.client-gallery--single img{max-height:760px;aspect-ratio:16/9;object-fit:cover}
+.client-work-cta{padding:70px 0;border-top:1px solid var(--line)}
+.client-work-cta h2{font-size:clamp(2.8rem,5vw,5rem);max-width:760px;margin-bottom:28px}
+@media(max-width:760px){.client-room-heading{grid-template-columns:1fr;gap:14px}.client-gallery,.client-gallery--feature{grid-template-columns:1fr 1fr}.client-gallery--feature img:first-child{grid-column:1/-1}.client-gallery--single img{aspect-ratio:4/3}.client-room{padding:42px 0}}
+@media(max-width:520px){.client-gallery,.client-gallery--feature{grid-template-columns:1fr}.client-gallery--feature img:first-child{grid-column:auto}.client-work-disclosure{padding:18px}}
