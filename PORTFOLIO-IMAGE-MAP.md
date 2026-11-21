@@ -1,45 +1,52 @@
-# Artisan Mate Portfolio Image Migration
+# Artisan Mate 2026 Portfolio Image Map
 
-Status: assets received for the 2026 website redesign. These are architectural/interior 3D visualisations, not verified photographs of completed work. Use language such as "design visualisation" or "interior design study" unless the studio confirms completed-project photography.
+All 14 source images have been received and classified. They are architectural/interior design visualisations, not verified photography of completed projects. Do not claim client names, locations, budgets, completion status or project counts without confirmation.
 
-## New image inventory
+## Image manifest
 
-| Upload filename | Category | Recommended role |
+| Filename | Category | Page placement |
 |---|---|---|
-| 1000094903.jpg | Recreation / games room | Gallery image |
-| 1000094904.jpg | Recreation / games room | Gallery image |
-| 1000094905.jpg | Bedroom | Featured bedroom gallery |
-| 1000094906.jpg | Bedroom | Featured bedroom gallery |
-| 1000094907.jpg | Bathroom | Featured bathroom gallery |
-| 1000094908.jpg | Living / dining | Homepage portfolio feature |
-| 1000094909.jpg | Bedroom | Bedroom gallery |
-| 1000094910.jpg | Gym / fitness | Homepage secondary feature |
-| 1000094911.jpg | Kitchen | Kitchen feature |
-| 1000094912.jpg | Living / dining | Homepage portfolio feature |
-| 1000094913.jpg | Bathroom | Bathroom gallery |
-| 1000094914.jpg | Bedroom | Bedroom gallery |
-| 1000094915.jpg | Gym / fitness | Gym gallery |
-| 1000094916.jpg | Bathroom | Bathroom gallery |
+| 1000094903.jpg | Recreation | project-amenities.html |
+| 1000094904.jpg | Recreation | project-amenities.html |
+| 1000094905.jpg | Bedroom | project-bedroom.html |
+| 1000094906.jpg | Bedroom | project-bedroom.html |
+| 1000094907.jpg | Bathroom | project-bathroom.html |
+| 1000094908.jpg | Living / dining | Homepage hero |
+| 1000094909.jpg | Bedroom | project-bedroom.html |
+| 1000094910.jpg | Gym / fitness | project-amenities.html |
+| 1000094911.jpg | Kitchen | project-kitchen.html |
+| 1000094912.jpg | Living / dining | project-living.html |
+| 1000094913.jpg | Bathroom | project-bathroom.html |
+| 1000094914.jpg | Bedroom | project-bedroom.html |
+| 1000094915.jpg | Gym / fitness | project-amenities.html |
+| 1000094916.jpg | Bathroom | project-bathroom.html |
 
-## Recommended portfolio taxonomy
+## Expected repository asset paths
 
-Organise the new work by space type until project ownership/grouping is confirmed:
-- Living & Dining
-- Bedrooms
-- Bathrooms
-- Kitchen
-- Fitness
-- Recreation
+Place the original images at `assets/portfolio-2026/<filename>`. Do not rename or recompress the source originals in place. Add optimised derivatives separately after visual QA.
 
-Do not imply that each image is a separate client project. Do not invent project names, locations, budgets, completion status, or client details.
+## Current website implementation
+
+- `index.html`: rebuilt editorial homepage with the new portfolio taxonomy.
+- `redesign.css`: responsive design system, typography, navigation, gallery and project-page styling.
+- `project-living.html`: living and dining gallery.
+- `project-bedroom.html`: bedroom gallery.
+- `project-bathroom.html`: bathroom gallery.
+- `project-kitchen.html`: kitchen gallery.
+- `project-amenities.html`: gym and recreation gallery.
+
+## Pre-publication checklist
+
+- [ ] Upload all 14 source images to `assets/portfolio-2026/`.
+- [ ] Generate responsive WebP derivatives and retain JPEG fallbacks.
+- [ ] Verify every image URL and intrinsic dimension.
+- [ ] Check all six portfolio destinations on desktop and mobile.
+- [ ] Test WhatsApp and email links.
+- [ ] Check canonical, Open Graph, title and description metadata.
+- [ ] Run link, accessibility and performance checks.
+- [ ] Confirm all legacy architecture pages remain accessible.
+- [ ] Publish only after all checks pass.
 
 ## Art direction
 
-- Keep the existing Cormorant Garamond + DM Sans pairing.
-- Keep the warm paper, ink, olive and restrained gold palette.
-- Use the wide living/dining images for large editorial cards.
-- Use portrait/square images for secondary cards and gallery details.
-- Preserve original aspect ratios; use object-fit: cover only for intentionally cropped cards.
-- Provide descriptive alt text based on visible room type and features.
-- Optimise image delivery to WebP/AVIF derivatives with JPEG fallbacks, responsive srcset and explicit dimensions.
-- Do not replace source originals or remove existing assets until all new paths are verified.
+Use Cormorant Garamond and DM Sans with the warm paper, ink and olive palette. Preserve source aspect ratios in galleries. Use descriptive alt text. Clearly label the images as design visualisations.
