@@ -248,3 +248,9 @@ body.lead-popup-open{overflow:hidden}
 .client-work-cta h2{font-size:clamp(2.8rem,5vw,5rem);max-width:760px;margin-bottom:28px}
 @media(max-width:760px){.client-room-heading{grid-template-columns:1fr;gap:14px}.client-gallery,.client-gallery--feature{grid-template-columns:1fr 1fr}.client-gallery--feature img:first-child{grid-column:1/-1}.client-gallery--single img{aspect-ratio:4/3}.client-room{padding:42px 0}}
 @media(max-width:520px){.client-gallery,.client-gallery--feature{grid-template-columns:1fr}.client-gallery--feature img:first-child{grid-column:auto}.client-work-disclosure{padding:18px}}
+
+/* Qualified project enquiry form */
+.project-form .form-consent{display:flex;align-items:flex-start;gap:10px;font-size:.76rem;text-transform:none;letter-spacing:0;line-height:1.55;color:var(--ink)}
+.project-form .form-consent input{width:auto;flex:0 0 auto;margin:4px 0 0;accent-color:var(--ink)}
+.project-form .field-optional,.project-form .field-required{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.project-form .field-optional{margin-left:4px}
