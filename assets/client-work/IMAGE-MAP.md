@@ -1,31 +1,30 @@
 # Client project render assets
 
-All 14 source images supplied in the conversation are residential interior 3D visualisations, not completed-project photographs. Preserve that distinction in page copy and captions.
+The 13 supplied project images below are residential interior 3D visualisations, not photographs of completed construction. Keep this distinction clear in page copy and captions.
 
-## Optimised website asset map
+## Optimised website assets
 
-| Website file | Source upload | Category | Notes |
+| Website file | Original upload | Category | Notes |
 |---|---|---|---|
-| bedroom-01.webp | 1000094905.jpg | Bedroom | Warm timber feature wall and upholstered bed |
-| bedroom-02.webp | 1000094909.jpg | Bedroom | Compact bedroom with television wall and integrated storage |
-| bedroom-03.webp | 1000094914.jpg | Bedroom | Darker textured feature wall and warm bedside lighting |
-| bedroom-04.webp | 1000094906.jpg | Bedroom | Full-height timber wardrobes and bright window-side seating |
-| bathroom-01.webp | 1000094907.jpg | Bathroom | Marble-look grey surfaces and glass shower enclosure |
-| bathroom-02.webp | 1000094913.jpg | Bathroom | Grey stone bathroom, vanity and shower |
-| bathroom-03.webp | 1000094916.jpg | Bathroom | Floating vanity, illuminated mirror and frameless shower |
-| kitchen-01.webp | 1000094911.jpg | Kitchen | Parallel / galley kitchen with neutral cabinetry |
-| living-dining-01.webp | 1000094908.jpg | Living + dining | Wide open-plan living and dining view |
-| living-dining-02.webp | 1000094912.jpg | Living + dining | Alternate dining-led view of the open-plan space |
-| gym-01.webp | 1000094910.jpg | Gym | Fitness room view with cardio and strength equipment |
-| gym-02.webp | 1000094915.jpg | Gym | Alternate angle of the same fitness room |
-| recreation-01.webp | 1000094903.jpg | Recreation / games | Games room with foosball and lounge seating |
-| recreation-02.webp | 1000094904.jpg | Recreation / games | Alternate recreation view with pool table and play zone |
+| living-dining-01.webp | 1000093854.jpg | Living + dining | Open-plan dining area with adjoining lounge |
+| living-dining-02.webp | 1000093866.jpg | Living + dining | Living room with TV wall and dining zone |
+| bedroom-01.webp | 1000093848.jpg | Bedroom | Bedroom with warm timber finishes and upholstered bed |
+| bedroom-02.webp | 1000093858.jpg | Bedroom | Bedroom view with integrated TV wall and storage |
+| bedroom-03.webp | 1000093868.jpg | Bedroom | Bedroom with textured feature wall and warm timber detailing |
+| kitchen-01.webp | 1000093860.jpg | Kitchen | Parallel / galley kitchen with neutral cabinetry |
+| bathroom-01.webp | 1000093852.jpg | Bathroom | Grey stone finishes and glass shower enclosure |
+| bathroom-02.webp | 1000093862.jpg | Bathroom | Contemporary bathroom with glass shower and vanity |
+| bathroom-03.webp | 1000093869.jpg | Bathroom | Bathroom with floating vanity and frameless glass shower |
+| gym-01.webp | 1000093855.jpg | Gym | Fitness room with cardio and strength equipment |
+| gym-02.webp | 1000093864.jpg | Gym | Alternate angle of the same fitness room |
+| recreation-01.webp | 1000093842.jpg | Recreation / games | Games room with lounge seating |
+| recreation-02.webp | 1000093844.jpg | Recreation / games | Recreation room with pool table and lounge zone |
 
 ## Website direction
 
 - Lead with residential interiors before architecture.
-- Use living/dining or bedroom imagery for the homepage hero.
-- Group imagery by room type, not by assumed client/property.
+- Group imagery by room type, not by assumed client or property.
 - Label all supplied imagery as 3D visualisations.
+- Treat gym-02 and recreation-02 as alternate views, not separate projects.
 - Retain the existing enquiry form, WhatsApp consultation links, Meta Pixel and architecture project pages.
-- Keep this work on the staging branch until all 14 optimised image assets are uploaded and verified.
+- Keep this work on the staging branch until all 13 WebP assets are uploaded and every image URL is verified.
